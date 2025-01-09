@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = Layout = "../Shared/_LayoutBackend.cshtml";
+    ViewBag.Title = "IndexMenu";
+}
+
+<h2>Index Menu</h2>
+
+<div class="col-md-4">
+    <p>
+        @Html.ActionLink("Gestisci Piatti", "IndexPiatti")<br />
+        @Html.ActionLink("Gestisci Allergeni", "IndexAllergeni")
+    </p>
+
+
+</div>
