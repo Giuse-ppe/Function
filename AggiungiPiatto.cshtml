@@ -1,0 +1,95 @@
+﻿
+
+@using FattacciuSitoWeb.Models.ModelView
+
+
+@model FattacciuSitoWeb.Models.ModelView.PiattiViewModel
+
+@{
+    Layout = Layout = "../Shared/_LayoutBackend.cshtml";
+
+    List<CategoriePiattiViewModel> categoria = (List<CategoriePiattiViewModel>)ViewData["Categorie"];
+    List<AllergeniViewModel> allergeni = (List<AllergeniViewModel>)ViewData["Allergeni"];
+}
+
+<h2>AggiungiPiatto</h2>
+
+
+
+
+<section class="content" style="padding:10px;">
+    <form asp-controller="Backend" asp-action="AggiungiPiatto" method="post" enctype="multipart/form-data">
+        <div class="row">
+
+            <div class="col-md-4">
+                <label class="" for="Nome">Nome</label>
+                <input id="Nome" class="form-control" name="Nome" type="text" value="@Model.Nome" />
+            </div>
+            <div class="col-md-4">
+                <label class="" for="Descrizione">Descrizione</label>
+                <textarea id="Descrizione" class="form-control" name="Descrizione" rows="4" cols="50" value="@Model.Descrizione" >
+                </textarea>
+            </div>
+            <div class="col-md-4">
+                <label class="" for="Prezzo">Prezzo</label>
+                <input id="Prezzo" class="form-control" name="Prezzo" type="text" value="@Model.Prezzo" />
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <label> CATEGORIA </label><br>
+                @foreach (var item in categoria)
+                {
+                    <input type="radio" id="@item.IdCategoria" name="IdCategoria" value="@item.IdCategoria">
+                    <label for="@item.IdCategoria"> @item.Nome </label><br>
+                }
+
+            </div>
+
+            <div class="col-md-4">
+                <label for="vehicle1">ALLERGENI</label><br>
+                @foreach (var item in allergeni)
+                {
+                    <input type="checkbox" id="vehicle1" name="IdAllergene" value="@item.IdAllergeni">
+                    <label for="vehicle1"> @item.Nome </label><br>
+                }
+
+            </div>
+            <div class="col-md-4">
+
+                <label> ALIMENTO SURGELATO </label><br>
+                <input type="radio" id="siGelo" name="Gelo" value="true">
+                <label for="siGelo">Si</label><br>
+                <input type="radio" id="noGElo" name="Gelo" value="false">
+                <label for="noGElo">No</label><br>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+                       
+
+            <div class="col-md-4">
+                <br />
+                <label> INSERISCI PIATTO NEL MENU' </label><br>
+                <input type="radio" id="siAttivo" name="Attivo" value="true ">
+                <label for="siAttivo">Si</label><br>
+                <input type="radio" id="noAttivo" name="Attivo" value="false ">
+                <label for="noAttivo">No</label><br>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <button class="mt-1 btn btn-primary">Salva</button>
+            </div>
+        </div>
+    </form>
+</section>
